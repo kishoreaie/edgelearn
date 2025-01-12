@@ -214,5 +214,66 @@
          "value": ""
        }
     ]
+  },
+  {
+    "id": "hero-banner",
+    "fields": [
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Hero Banner Variant",
+        "options": [
+          { "name": "Image with Text and CTA", "value": "image-text-cta" },
+          { "name": "Video with Text and CTA", "value": "video-text-cta" }
+        ],
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string",
+        "multi": false,
+        "conditional": {
+          "field": "variant",
+          "equals": "image-text-cta"
+        }
+      },
+      {
+        "component": "reference",
+        "name": "video",
+        "label": "Video",
+        "valueType": "string",
+        "multi": false,
+        "conditional": {
+          "field": "variant",
+          "equals": "video-text-cta"
+        }
+      },
+      {
+        "component": "text",
+        "name": "headline",
+        "label": "Headline",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "valueType": "string"
+      }
+    ]
   }
 ]
