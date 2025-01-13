@@ -279,7 +279,27 @@
         "name": "tags",
         "label": "Tags",
         "valueType": "array"
-      }      
+      },
+      {
+        "component": "container",
+        "name": "additionalContent",
+        "label": "Additional Content",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "text1",
+            "label": "Text 1",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "text2",
+            "label": "Text 2",
+            "valueType": "string"
+          }
+        ]
+      }
     ]
   }
 ]
