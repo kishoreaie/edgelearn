@@ -273,6 +273,14 @@
         "name": "ctaText",
         "label": "CTA Text",
         "valueType": "string"
+      },
+      {
+        "component": "tagpicker",
+        "name": "tags",
+        "label": "Tags",
+        "valueType": "array",
+        "description": "Select tags for the Hero Banner.",
+        "multi": true
       }
     ]
   }
