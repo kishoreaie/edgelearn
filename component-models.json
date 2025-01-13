@@ -275,7 +275,7 @@
         "valueType": "string"
       },
       {
-        "component": "tagpicker",
+        "component": "aem-tag",
         "name": "tags",
         "label": "Tags",
         "valueType": "array"
