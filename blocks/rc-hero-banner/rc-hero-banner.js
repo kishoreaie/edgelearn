@@ -59,7 +59,7 @@ export default function decorate(block) {
     const heroArea = document.createElement('div');
     heroArea.className = 'ognm-header-recipe__hero-area clrs-dark clrs-primary';
     heroArea.appendChild(heroBackgroundContainer);
-    heroArea.appendChild(heroCaptionContainer);
+    heroArea.appendChild(captionOuterContainer);
   
     // Replace the block content with the new structure
     block.innerHTML = '';
