@@ -4,7 +4,7 @@ export default function decorate(block) {
   
     // Create a new hero content container
     const heroContent = document.createElement('div');
-    heroContent.className = 'hero-content';
+    heroContent.className = 'ognm-header-recipe tmpl-page__section tmpl-page__section--pd-btm-lg clrs-dark clrs-secondary';
   
     // Process the heading
     if (headingWrapper) {
