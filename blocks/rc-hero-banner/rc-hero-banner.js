@@ -50,6 +50,11 @@ export default function decorate(block) {
     }
     captionInner.appendChild(buttonContainer);
   
+    // Wrap the caption in the required container
+    const captionOuterContainer = document.createElement('div');
+    captionOuterContainer.className = 'ognm-header-recipe__container ognm-header-recipe__container--top elmt-container';
+    captionOuterContainer.appendChild(heroCaptionContainer);
+
     // Construct the full hero area
     const heroArea = document.createElement('div');
     heroArea.className = 'ognm-header-recipe__hero-area clrs-dark clrs-primary';
