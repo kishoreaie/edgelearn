@@ -30,8 +30,8 @@ export default function decorate(block) {
     const recipeDetailSubmittedBy = data.recipeDetailSubmittedBy;
   
     // Clear block to avoid appending multiple times
-    block.innerHTML = '';
-    console.log('Block Dataset after:', block.dataset);
+    //block.innerHTML = '';
+    console.log('Block Dataset after:', desktopImage);
 
   
     // Create Hero Area
