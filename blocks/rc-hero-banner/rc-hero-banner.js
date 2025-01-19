@@ -1,5 +1,13 @@
 export default function decorate(block) {
-  // Extract the hero background images
+  // Create the root section element
+  const section = document.createElement('div');
+  section.className = 'ognm-header-recipe tmpl-page__section tmpl-page__section--pd-btm-lg clrs-dark clrs-secondary';
+
+  // Create Hero Area
+  const heroArea = document.createElement('div');
+  heroArea.className = 'ognm-header-recipe__hero-area clrs-dark clrs-primary';
+
+  // Extract the hero background image
   const heroBackground = block.querySelector(':scope > div:nth-child(1) picture img');
   const heroMobileBackground = block.querySelector(':scope > div:nth-child(2) picture img');
   const heroBackgroundContainer = document.createElement('div');
@@ -9,73 +17,126 @@ export default function decorate(block) {
     const picture = document.createElement('picture');
     picture.className = 'ognm-header-recipe__hero-area__bg__picture';
 
-    // Add the <source> for desktop view
-    const source = document.createElement('source');
-    source.media = '(min-width: 768px)';
-    source.srcset = heroBackground.src;
+    // Add desktop and mobile srcsets
+    const sourceDesktop = document.createElement('source');
+    sourceDesktop.media = '(min-width: 768px)';
+    sourceDesktop.srcset = heroBackground.src;
 
-    // Add the <img> as a fallback and for mobile view
     const img = document.createElement('img');
     img.className = 'ognm-header-recipe__hero-area__bg__img';
     img.src = heroMobileBackground.src || heroBackground.src;
     img.alt = heroBackground.alt || 'Hero Image';
 
-    // Append elements to the picture
-    picture.appendChild(source);
+    picture.appendChild(sourceDesktop);
     picture.appendChild(img);
-
-    // Append picture to the background container
     heroBackgroundContainer.appendChild(picture);
   }
 
-  // Extract the heading
-  const headingWrapper = block.querySelector(':scope > div:nth-child(4)');
-  const headingContent = headingWrapper?.textContent.trim() || '';
-  const heroCaptionContainer = document.createElement('div');
-  heroCaptionContainer.className = 'ognm-header-recipe__hero-area__caption';
+  // Caption Area
+  const captionContainer = document.createElement('div');
+  captionContainer.className = 'ognm-header-recipe__container ognm-header-recipe__container--top elmt-container';
 
   const caption = document.createElement('div');
-  caption.className = 'elmt-caption';
+  caption.className = 'ognm-header-recipe__hero-area__caption';
+
   const captionInner = document.createElement('div');
   captionInner.className = 'elmt-caption__inner';
 
   const heading = document.createElement('h1');
   heading.className = 'elmt-caption__title atom-heading atom-heading--lrg';
-  heading.textContent = headingContent;
+  heading.textContent = block.querySelector(':scope > div:nth-child(4)').textContent.trim();
 
-  // Append heading to the caption
-  captionInner.appendChild(heading);
-  caption.appendChild(captionInner);
-  heroCaptionContainer.appendChild(caption);
-
-  // Extract buttons (Save Recipe, Jump to Recipe)
   const buttonsWrapper = block.querySelector(':scope > div:nth-child(5)');
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'elmt-caption__ctas';
 
   if (buttonsWrapper) {
-    const buttons = buttonsWrapper.querySelectorAll('p');
-    buttons.forEach((btn) => {
+    buttonsWrapper.querySelectorAll('p').forEach((btn) => {
       const button = document.createElement('button');
       button.className = 'atom-button';
       button.textContent = btn.textContent.trim();
       buttonContainer.appendChild(button);
     });
   }
+
+  captionInner.appendChild(heading);
   captionInner.appendChild(buttonContainer);
+  caption.appendChild(captionInner);
+  captionContainer.appendChild(caption);
 
-  // Wrap the caption in the required container
-  const captionOuterContainer = document.createElement('div');
-  captionOuterContainer.className = 'ognm-header-recipe__container ognm-header-recipe__container--top elmt-container';
-  captionOuterContainer.appendChild(heroCaptionContainer);
-
-  // Construct the full hero area
-  const heroArea = document.createElement('div');
-  heroArea.className = 'ognm-header-recipe__hero-area clrs-dark clrs-primary';
   heroArea.appendChild(heroBackgroundContainer);
-  heroArea.appendChild(captionOuterContainer);
+  heroArea.appendChild(captionContainer);
 
-  // Replace the block content with the new structure
+  // Add Hero Area to the section
+  section.appendChild(heroArea);
+
+  // Create Author Card Area
+  const authorCard = document.createElement('div');
+  authorCard.className = 'ognm-header-recipe__author-card';
+
+  const authorCardInner = document.createElement('div');
+  authorCardInner.className = 'ognm-header-recipe__author-card__card clrs-light clrs-primary';
+
+  const authorCaption = document.createElement('div');
+  authorCaption.className = 'elmt-caption';
+
+  const authorCaptionInner = document.createElement('div');
+  authorCaptionInner.className = 'elmt-caption__inner';
+
+  const authorEyebrow = document.createElement('p');
+  authorEyebrow.className = 'elmt-caption__eyebrow atom-eyebrow';
+  authorEyebrow.textContent = 'Meet the Creator';
+
+  const authorTitle = document.createElement('h2');
+  authorTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
+  authorTitle.textContent = 'How a Simple Onion Won the Hearts & Minds of a Generation';
+
+  const authorInfo = document.createElement('div');
+  authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
+
+  const authorName = document.createElement('div');
+  authorName.className = 'elmt-author__info__name';
+  authorName.textContent = 'Matthew Giebeig';
+
+  const authorDesc = document.createElement('div');
+  authorDesc.className = 'elmt-author__info__desc';
+  authorDesc.textContent = 'Senior Frontend Developer';
+
+  authorInfo.appendChild(authorName);
+  authorInfo.appendChild(authorDesc);
+
+  authorCaptionInner.appendChild(authorEyebrow);
+  authorCaptionInner.appendChild(authorTitle);
+  authorCaptionInner.appendChild(authorInfo);
+  authorCaption.appendChild(authorCaptionInner);
+  authorCardInner.appendChild(authorCaption);
+  authorCard.appendChild(authorCardInner);
+
+  // Add Author Card Area to the section
+  section.appendChild(authorCard);
+
+  // Create Recipe Detail Area
+  const detailArea = document.createElement('div');
+  detailArea.className = 'ognm-header-recipe__detail-area';
+
+  const detailIntro = document.createElement('div');
+  detailIntro.className = 'ognm-header-recipe__simple-intro';
+
+  const detailIntroCaption = document.createElement('div');
+  detailIntroCaption.className = 'elmt-caption';
+
+  const detailTitle = document.createElement('h2');
+  detailTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-lrg';
+  detailTitle.textContent = 'Matthew\'s Famous Red Onion Stew';
+
+  detailIntroCaption.appendChild(detailTitle);
+  detailIntro.appendChild(detailIntroCaption);
+  detailArea.appendChild(detailIntro);
+
+  // Add Recipe Detail Area to the section
+  section.appendChild(detailArea);
+
+  // Replace the block content with the newly constructed section
   block.innerHTML = '';
-  block.appendChild(heroArea);
+  block.appendChild(section);
 }
