@@ -1,5 +1,7 @@
 export default function decorate(block) {
     const data = block.dataset;
+
+    console.log('Block Dataset: ', block.dataset);
   
     // General Section
     const desktopImage = data.desktopImage;
@@ -27,6 +29,8 @@ export default function decorate(block) {
   
     // Clear block to avoid appending multiple times
     block.innerHTML = '';
+    console.log('Block Dataset after:', block.dataset);
+
   
     // Create Hero Area
     const heroArea = document.createElement('div');
