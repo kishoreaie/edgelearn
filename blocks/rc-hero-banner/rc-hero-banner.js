@@ -1,184 +1,197 @@
 export default function decorate(block) {
     const data = block.dataset;
   
-    // General Tab
-    const desktopImage = data.desktopImage;
-    const mobileImage = data.mobileImage;
-    const eyebrow = data.eyebrow;
-    const heading = data.heading;
-    const saveRecipeText = data.saveRecipeText;
-    const jumpRecipeText = data.jumpRecipeText;
+    // Create Hero Area
+    const heroArea = document.createElement('div');
+    heroArea.classList.add('ognm-header-recipe__hero-area', 'clrs-dark', 'clrs-primary');
   
-    // Author Card Tab
-    const authorCardEyebrow = data.authorCardEyebrow;
-    const authorCardHeading = data.authorCardHeading;
-    const authorImage = data.authorImage;
-    const authorName = data.authorName;
-    const authorDesignation = data.authorDesignation;
+    const heroBg = document.createElement('div');
+    heroBg.classList.add('ognm-header-recipe__hero-area__bg');
   
-    // Recipe Detail Tab
-    const recipeDetailHeading = data.recipeDetailHeading;
-    const recipeDetailDescription = data.recipeDetailDescription;
-    const recipeDetailTime = data.recipeDetailTime;
-    const recipeDetailYield = data.recipeDetailYield;
-    const recipeDetailDifficulty = data.recipeDetailDifficulty;
-    const recipeDetailDietary = data.recipeDetailDietary;
-    const recipeDetailSubmittedBy = data.recipeDetailSubmittedBy;
+    const picture = document.createElement('picture');
+    picture.classList.add('ognm-header-recipe__hero-area__bg__picture');
   
-    // Create HTML for General Tab
-    if (desktopImage || mobileImage) {
-      const media = document.createElement('div');
-      media.classList.add('hero-banner-media');
+    // Add image sources dynamically
+    if (data.desktopImage) {
+      const sourceDesktop = document.createElement('source');
+      sourceDesktop.media = '(min-width: 1025px)';
+      sourceDesktop.srcset = data.desktopImage;
+      picture.appendChild(sourceDesktop);
+    }
+    if (data.mobileImage) {
+      const sourceMobile = document.createElement('source');
+      sourceMobile.media = '(min-width: 768px)';
+      sourceMobile.srcset = data.mobileImage;
+      picture.appendChild(sourceMobile);
+    }
+    const img = document.createElement('img');
+    img.classList.add('ognm-header-recipe__hero-area__bg__img');
+    img.src = data.mobileImage || data.desktopImage || '';
+    img.alt = data.altText || 'Hero Image';
+    picture.appendChild(img);
+    heroBg.appendChild(picture);
+    heroArea.appendChild(heroBg);
   
-      if (desktopImage) {
-        const desktopImg = document.createElement('img');
-        desktopImg.src = desktopImage;
-        desktopImg.alt = 'Desktop Image';
-        desktopImg.classList.add('desktop-image');
-        media.appendChild(desktopImg);
+    const heroContainer = document.createElement('div');
+    heroContainer.classList.add('ognm-header-recipe__container', 'ognm-header-recipe__container--top', 'elmt-container');
+  
+    const caption = document.createElement('div');
+    caption.classList.add('ognm-header-recipe__hero-area__caption');
+  
+    const elmtCaption = document.createElement('div');
+    elmtCaption.classList.add('elmt-caption');
+  
+    const captionInner = document.createElement('div');
+    captionInner.classList.add('elmt-caption__inner');
+  
+    // Eyebrow
+    if (data.eyebrow) {
+      const eyebrow = document.createElement('p');
+      eyebrow.classList.add('elmt-caption__eyebrow', 'atom-eyebrow', 'atom-eyebrow--mega');
+      eyebrow.textContent = data.eyebrow;
+      captionInner.appendChild(eyebrow);
+    }
+  
+    // Heading
+    if (data.heading) {
+      const heading = document.createElement('h1');
+      heading.classList.add('elmt-caption__title', 'atom-heading', 'atom-heading--lrg');
+      heading.textContent = data.heading;
+      captionInner.appendChild(heading);
+    }
+  
+    // CTA Buttons
+    const ctas = document.createElement('div');
+    ctas.classList.add('elmt-caption__ctas');
+  
+    if (data.saveRecipeText) {
+      const saveButton = document.createElement('button');
+      saveButton.classList.add('atom-button');
+      saveButton.textContent = data.saveRecipeText;
+      ctas.appendChild(saveButton);
+    }
+  
+    if (data.jumpRecipeText) {
+      const jumpLink = document.createElement('a');
+      jumpLink.classList.add('atom-button-link', 'js-jump-link');
+      jumpLink.href = '#nav-1';
+      jumpLink.textContent = data.jumpRecipeText;
+      ctas.appendChild(jumpLink);
+    }
+  
+    captionInner.appendChild(ctas);
+    elmtCaption.appendChild(captionInner);
+    caption.appendChild(elmtCaption);
+    heroContainer.appendChild(caption);
+    heroArea.appendChild(heroContainer);
+    block.appendChild(heroArea);
+  
+    // Create Author Card
+    if (data.authorCardEyebrow || data.authorCardHeading || data.authorImage || data.authorName || data.authorDesignation) {
+      const authorCard = document.createElement('div');
+      authorCard.classList.add('ognm-header-recipe__author-card');
+  
+      const authorCardInner = document.createElement('div');
+      authorCardInner.classList.add('ognm-header-recipe__author-card__card', 'clrs-light', 'clrs-primary');
+  
+      const authorCaption = document.createElement('div');
+      authorCaption.classList.add('elmt-caption');
+  
+      const authorCaptionInner = document.createElement('div');
+      authorCaptionInner.classList.add('elmt-caption__inner');
+  
+      if (data.authorCardEyebrow) {
+        const eyebrow = document.createElement('p');
+        eyebrow.classList.add('elmt-caption__eyebrow', 'atom-eyebrow');
+        eyebrow.textContent = data.authorCardEyebrow;
+        authorCaptionInner.appendChild(eyebrow);
       }
   
-      if (mobileImage) {
-        const mobileImg = document.createElement('img');
-        mobileImg.src = mobileImage;
-        mobileImg.alt = 'Mobile Image';
-        mobileImg.classList.add('mobile-image');
-        media.appendChild(mobileImg);
+      if (data.authorCardHeading) {
+        const heading = document.createElement('h2');
+        heading.classList.add('elmt-caption__title', 'atom-heading', 'atom-heading--sub-med');
+        heading.textContent = data.authorCardHeading;
+        authorCaptionInner.appendChild(heading);
       }
   
-      block.appendChild(media);
-    }
+      const authorDetails = document.createElement('div');
+      authorDetails.classList.add('elmt-caption__author');
   
-    if (eyebrow) {
-      const eyebrowElement = document.createElement('div');
-      eyebrowElement.classList.add('hero-eyebrow');
-      eyebrowElement.textContent = eyebrow;
-      block.appendChild(eyebrowElement);
-    }
+      const authorInfo = document.createElement('div');
+      authorInfo.classList.add('elmt-author');
   
-    if (heading) {
-      const headingElement = document.createElement('h1');
-      headingElement.classList.add('hero-heading');
-      headingElement.textContent = heading;
-      block.appendChild(headingElement);
-    }
-  
-    if (saveRecipeText || jumpRecipeText) {
-      const ctaContainer = document.createElement('div');
-      ctaContainer.classList.add('cta-container');
-  
-      if (saveRecipeText) {
-        const saveRecipeButton = document.createElement('button');
-        saveRecipeButton.classList.add('save-recipe-button');
-        saveRecipeButton.textContent = saveRecipeText;
-        ctaContainer.appendChild(saveRecipeButton);
+      if (data.authorImage) {
+        const portrait = document.createElement('img');
+        portrait.classList.add('elmt-author__portrait__image');
+        portrait.src = data.authorImage;
+        portrait.alt = `Image of ${data.authorName || 'Author'}`;
+        authorInfo.appendChild(portrait);
       }
   
-      if (jumpRecipeText) {
-        const jumpRecipeButton = document.createElement('button');
-        jumpRecipeButton.classList.add('jump-recipe-button');
-        jumpRecipeButton.textContent = jumpRecipeText;
-        ctaContainer.appendChild(jumpRecipeButton);
+      if (data.authorName || data.authorDesignation) {
+        const authorText = document.createElement('div');
+        authorText.classList.add('elmt-author__info');
+  
+        if (data.authorName) {
+          const name = document.createElement('div');
+          name.classList.add('elmt-author__info__name');
+          name.textContent = data.authorName;
+          authorText.appendChild(name);
+        }
+  
+        if (data.authorDesignation) {
+          const designation = document.createElement('div');
+          designation.classList.add('elmt-author__info__desc');
+          designation.textContent = data.authorDesignation;
+          authorText.appendChild(designation);
+        }
+  
+        authorInfo.appendChild(authorText);
       }
   
-      block.appendChild(ctaContainer);
+      authorDetails.appendChild(authorInfo);
+      authorCaptionInner.appendChild(authorDetails);
+      authorCaption.appendChild(authorCaptionInner);
+      authorCardInner.appendChild(authorCaption);
+      authorCard.appendChild(authorCardInner);
+      block.appendChild(authorCard);
     }
   
-    // Create HTML for Author Card Tab
-    const authorCard = document.createElement('div');
-    authorCard.classList.add('author-card');
+    // Create Detail Area
+    const detailArea = document.createElement('div');
+    detailArea.classList.add('ognm-header-recipe__detail-area');
   
-    if (authorCardEyebrow) {
-      const authorEyebrowElement = document.createElement('div');
-      authorEyebrowElement.classList.add('author-eyebrow');
-      authorEyebrowElement.textContent = authorCardEyebrow;
-      authorCard.appendChild(authorEyebrowElement);
+    const detailContainer = document.createElement('div');
+    detailContainer.classList.add('ognm-header-recipe__container', 'ognm-header-recipe__container--detail-simple-flex', 'elmt-container');
+  
+    const simpleIntro = document.createElement('div');
+    simpleIntro.classList.add('ognm-header-recipe__simple-intro');
+  
+    const detailCaption = document.createElement('div');
+    detailCaption.classList.add('elmt-caption');
+  
+    const detailCaptionInner = document.createElement('div');
+    detailCaptionInner.classList.add('elmt-caption__inner');
+  
+    if (data.recipeDetailHeading) {
+      const heading = document.createElement('h2');
+      heading.classList.add('elmt-caption__title', 'atom-heading', 'atom-heading--sub-lrg');
+      heading.textContent = data.recipeDetailHeading;
+      detailCaptionInner.appendChild(heading);
     }
   
-    if (authorCardHeading) {
-      const authorHeadingElement = document.createElement('h2');
-      authorHeadingElement.classList.add('author-heading');
-      authorHeadingElement.textContent = authorCardHeading;
-      authorCard.appendChild(authorHeadingElement);
+    if (data.recipeDetailDescription) {
+      const description = document.createElement('p');
+      description.classList.add('elmt-caption__desc', 'atom-text', 'atom-text--wysiwyg');
+      description.innerHTML = data.recipeDetailDescription;
+      detailCaptionInner.appendChild(description);
     }
   
-    if (authorImage) {
-      const authorImgElement = document.createElement('img');
-      authorImgElement.src = authorImage;
-      authorImgElement.alt = 'Author Image';
-      authorImgElement.classList.add('author-image');
-      authorCard.appendChild(authorImgElement);
-    }
-  
-    if (authorName) {
-      const authorNameElement = document.createElement('p');
-      authorNameElement.classList.add('author-name');
-      authorNameElement.textContent = authorName;
-      authorCard.appendChild(authorNameElement);
-    }
-  
-    if (authorDesignation) {
-      const authorDesignationElement = document.createElement('p');
-      authorDesignationElement.classList.add('author-designation');
-      authorDesignationElement.textContent = authorDesignation;
-      authorCard.appendChild(authorDesignationElement);
-    }
-  
-    block.appendChild(authorCard);
-  
-    // Create HTML for Recipe Detail Tab
-    const recipeDetail = document.createElement('div');
-    recipeDetail.classList.add('recipe-detail');
-  
-    if (recipeDetailHeading) {
-      const recipeHeadingElement = document.createElement('h3');
-      recipeHeadingElement.classList.add('recipe-heading');
-      recipeHeadingElement.textContent = recipeDetailHeading;
-      recipeDetail.appendChild(recipeHeadingElement);
-    }
-  
-    if (recipeDetailDescription) {
-      const recipeDescriptionElement = document.createElement('div');
-      recipeDescriptionElement.classList.add('recipe-description');
-      recipeDescriptionElement.innerHTML = recipeDetailDescription;
-      recipeDetail.appendChild(recipeDescriptionElement);
-    }
-  
-    if (recipeDetailTime) {
-      const recipeTimeElement = document.createElement('p');
-      recipeTimeElement.classList.add('recipe-time');
-      recipeTimeElement.textContent = `Time: ${recipeDetailTime}`;
-      recipeDetail.appendChild(recipeTimeElement);
-    }
-  
-    if (recipeDetailYield) {
-      const recipeYieldElement = document.createElement('p');
-      recipeYieldElement.classList.add('recipe-yield');
-      recipeYieldElement.textContent = `Yield: ${recipeDetailYield}`;
-      recipeDetail.appendChild(recipeYieldElement);
-    }
-  
-    if (recipeDetailDifficulty) {
-      const recipeDifficultyElement = document.createElement('p');
-      recipeDifficultyElement.classList.add('recipe-difficulty');
-      recipeDifficultyElement.textContent = `Difficulty: ${recipeDetailDifficulty}`;
-      recipeDetail.appendChild(recipeDifficultyElement);
-    }
-  
-    if (recipeDetailDietary) {
-      const recipeDietaryElement = document.createElement('p');
-      recipeDietaryElement.classList.add('recipe-dietary');
-      recipeDietaryElement.textContent = `Dietary: ${recipeDetailDietary}`;
-      recipeDetail.appendChild(recipeDietaryElement);
-    }
-  
-    if (recipeDetailSubmittedBy) {
-      const recipeSubmittedByElement = document.createElement('p');
-      recipeSubmittedByElement.classList.add('recipe-submitted-by');
-      recipeSubmittedByElement.textContent = `Submitted By: ${recipeDetailSubmittedBy}`;
-      recipeDetail.appendChild(recipeSubmittedByElement);
-    }
-  
-    block.appendChild(recipeDetail);
+    detailCaption.appendChild(detailCaptionInner);
+    simpleIntro.appendChild(detailCaption);
+    detailContainer.appendChild(simpleIntro);
+    detailArea.appendChild(detailContainer);
+    block.appendChild(detailArea);
+
 }
   
