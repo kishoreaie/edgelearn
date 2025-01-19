@@ -1,7 +1,7 @@
 export default function decorate(block) {
     const data = block.dataset;
 
-    console.log('Block Dataset: ', block.dataset);
+    //console.log('Block Dataset: ', block.dataset);
   
     // General Section
     const desktopImage = data.desktopImage;
@@ -10,6 +10,8 @@ export default function decorate(block) {
     const heading = data.heading;
     const saveRecipeText = data.saveRecipeText;
     const jumpRecipeText = data.jumpRecipeText;
+
+    console.log('Block Desktop Image: ', desktopImage);
   
     // Author Card Section
     const authorCardEyebrow = data.authorCardEyebrow;
