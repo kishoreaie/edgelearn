@@ -1,22 +1,25 @@
 export default function decorate(block) {
-    const wrapper = block.querySelector('.rc-hero-banner-wrapper'); // Identify the wrapper
-    if (!wrapper) return; // Exit if the wrapper doesn't exist
+    // Select the wrapper
+    const wrapper = block.querySelector('.rc-hero-banner-wrapper');
+    if (!wrapper) return; // Exit if wrapper is not found
   
-    // Clear existing content within the wrapper
+    // Extract dataset
+    const data = block.dataset;
+  
+    // Clear existing content inside the wrapper
     wrapper.innerHTML = '';
   
-    // Hero Area
+    // Create Hero Area
     const heroArea = document.createElement('div');
     heroArea.classList.add('ognm-header-recipe__hero-area', 'clrs-dark', 'clrs-primary');
   
+    // Background Image
     const heroBg = document.createElement('div');
     heroBg.classList.add('ognm-header-recipe__hero-area__bg');
-  
     const picture = document.createElement('picture');
     picture.classList.add('ognm-header-recipe__hero-area__bg__picture');
   
-    // Create sources for the hero image
-    const data = block.dataset;
+    // Add desktop and mobile sources if available
     if (data.desktopImage) {
       const sourceDesktop = document.createElement('source');
       sourceDesktop.media = '(min-width: 1025px)';
@@ -30,6 +33,7 @@ export default function decorate(block) {
       picture.appendChild(sourceMobile);
     }
   
+    // Fallback image
     const img = document.createElement('img');
     img.classList.add('ognm-header-recipe__hero-area__bg__img');
     img.src = data.mobileImage || data.desktopImage || '';
@@ -39,15 +43,11 @@ export default function decorate(block) {
     heroBg.appendChild(picture);
     heroArea.appendChild(heroBg);
   
-    const heroContainer = document.createElement('div');
-    heroContainer.classList.add('ognm-header-recipe__container', 'ognm-header-recipe__container--top', 'elmt-container');
-  
-    const caption = document.createElement('div');
-    caption.classList.add('ognm-header-recipe__hero-area__caption');
-  
+    // Hero Caption
+    const heroCaption = document.createElement('div');
+    heroCaption.classList.add('ognm-header-recipe__hero-area__caption');
     const elmtCaption = document.createElement('div');
     elmtCaption.classList.add('elmt-caption');
-  
     const captionInner = document.createElement('div');
     captionInner.classList.add('elmt-caption__inner');
   
@@ -69,40 +69,38 @@ export default function decorate(block) {
   
     // CTA Buttons
     const ctas = document.createElement('div');
-    ctas.classList.add('elmt-caption__ctas');
+    ctas.classList.add('elmt-caption__ctas', 'elmt-buttons');
+  
     if (data.saveRecipeText) {
-      const saveButton = document.createElement('button');
-      saveButton.classList.add('atom-button');
-      saveButton.textContent = data.saveRecipeText;
-      ctas.appendChild(saveButton);
+      const saveRecipeButton = document.createElement('button');
+      saveRecipeButton.classList.add('atom-button');
+      saveRecipeButton.textContent = data.saveRecipeText;
+      ctas.appendChild(saveRecipeButton);
     }
+  
     if (data.jumpRecipeText) {
-      const jumpLink = document.createElement('a');
-      jumpLink.classList.add('atom-button-link', 'js-jump-link');
-      jumpLink.href = '#nav-1';
-      jumpLink.textContent = data.jumpRecipeText;
-      ctas.appendChild(jumpLink);
+      const jumpRecipeLink = document.createElement('a');
+      jumpRecipeLink.classList.add('atom-button-link', 'js-jump-link');
+      jumpRecipeLink.href = '#nav-1';
+      jumpRecipeLink.textContent = data.jumpRecipeText;
+      ctas.appendChild(jumpRecipeLink);
     }
   
     captionInner.appendChild(ctas);
     elmtCaption.appendChild(captionInner);
-    caption.appendChild(elmtCaption);
-    heroContainer.appendChild(caption);
-    heroArea.appendChild(heroContainer);
+    heroCaption.appendChild(elmtCaption);
+    heroArea.appendChild(heroCaption);
   
     wrapper.appendChild(heroArea);
   
-    // Add Author Card and Recipe Detail as required (similar structure)
-    // Example: Author Card
+    // Author Card
     if (data.authorName) {
       const authorCard = document.createElement('div');
       authorCard.classList.add('ognm-header-recipe__author-card');
       const authorCardInner = document.createElement('div');
       authorCardInner.classList.add('ognm-header-recipe__author-card__card', 'clrs-light', 'clrs-primary');
-  
       const authorCaption = document.createElement('div');
       authorCaption.classList.add('elmt-caption');
-  
       const authorCaptionInner = document.createElement('div');
       authorCaptionInner.classList.add('elmt-caption__inner');
   
@@ -116,5 +114,26 @@ export default function decorate(block) {
       authorCard.appendChild(authorCardInner);
       wrapper.appendChild(authorCard);
     }
-}
+  
+    // Recipe Details (Example)
+    const recipeDetail = document.createElement('div');
+    recipeDetail.classList.add('ognm-header-recipe__detail-area');
+    const detailContainer = document.createElement('div');
+    detailContainer.classList.add('ognm-header-recipe__container');
+  
+    if (data.recipeDetailHeading) {
+      const recipeHeading = document.createElement('h2');
+      recipeHeading.textContent = data.recipeDetailHeading;
+      detailContainer.appendChild(recipeHeading);
+    }
+  
+    if (data.recipeDetailDescription) {
+      const recipeDescription = document.createElement('p');
+      recipeDescription.textContent = data.recipeDetailDescription;
+      detailContainer.appendChild(recipeDescription);
+    }
+  
+    recipeDetail.appendChild(detailContainer);
+    wrapper.appendChild(recipeDetail);
+  }
   
