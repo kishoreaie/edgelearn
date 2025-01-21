@@ -95,12 +95,12 @@ export default function decorate(block) {
   const authorCaptionInner = document.createElement('div');
   authorCaptionInner.className = 'elmt-caption__inner';
 
-  const authorEyebrowText = block.querySelector(':scope > div:nth-child(8)');
+  const authorEyebrowText = block.querySelector(':scope > div:nth-child(8)').textContent.trim();
   const authorEyebrow = document.createElement('p');
   authorEyebrow.className = 'elmt-caption__eyebrow atom-eyebrow';
   authorEyebrow.textContent = authorEyebrowText;
 
-  const authorHeadingText = block.querySelector(':scope > div:nth-child(9)');
+  const authorHeadingText = block.querySelector(':scope > div:nth-child(9)').textContent.trim();
   const authorTitle = document.createElement('h2');
   authorTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
   authorTitle.textContent = authorHeadingText;
@@ -108,12 +108,12 @@ export default function decorate(block) {
   const authorInfo = document.createElement('div');
   authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
 
-  const authorNameText = block.querySelector(':scope > div:nth-child(11)');
+  const authorNameText = block.querySelector(':scope > div:nth-child(11)').textContent.trim();
   const authorName = document.createElement('div');
   authorName.className = 'elmt-author__info__name';
   authorName.textContent = authorNameText;
 
-  const authorNameDesc = block.querySelector(':scope > div:nth-child(12)');
+  const authorNameDesc = block.querySelector(':scope > div:nth-child(12)').textContent.trim();
   const authorDesc = document.createElement('div');
   authorDesc.className = 'elmt-author__info__desc';
   authorDesc.textContent = authorNameDesc;
