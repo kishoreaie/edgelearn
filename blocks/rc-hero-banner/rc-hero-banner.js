@@ -1,16 +1,27 @@
 export default function decorate(block) {
 
-  /* Div structure
-  1. Desktop Banner Image
-  2. Mobile Banner Image
-  3. Alt Image
-  4. Eyebrow
-  5. Heading
-  6. Save Recipe Text
-  7. Jump Recipe Text
+  /* Div Structure
+    1. Desktop Banner Image
+    2. Mobile Banner Image
+    3. Alt Image
+    4. Eyebrow
+    5. Heading
+    6. Save Recipe Text
+    7. Jump Recipe Text
+    8. Author Eyebrow
+    9. Author Heading
+    10. Author Image
+    11. Author Name
+    12. Author Designation
+    13. Recipe Detail Heading
+    14. Recipe Detail Description
+    15. Time
+    16. Yield
+    17. Difficulty Level
+    18. Dietary Interest
+    19. Submitted By
   */
 
-  // Create the root section element
   const section = document.createElement('div');
   section.className = 'ognm-header-recipe tmpl-page__section tmpl-page__section--pd-btm-lg clrs-dark clrs-secondary';
 
@@ -282,4 +293,5 @@ export default function decorate(block) {
   // Replace the block content with the newly constructed section
   block.innerHTML = '';
   block.appendChild(section);
+
 }
