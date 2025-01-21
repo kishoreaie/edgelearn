@@ -196,6 +196,73 @@ export default function decorate(block) {
   const detailMeasurements = document.createElement('div');
   detailMeasurements.className = 'ognm-header-recipe__combo-details';
 
+  // measurementsRootDiv container
+  const measurementsRootDiv = document.createElement('div');
+  measurementsRootDiv.className = 'ognm-header-recipe__combo-details__list';
+
+  // Icon List Container
+  const iconListContainer = document.createElement('div');
+  iconListContainer.className = 'elmt-caption';
+
+  const iconListInner = document.createElement('div');
+  iconListInner.className = 'elmt-caption__inner';
+
+  const iconList = document.createElement('div');
+  iconList.className = 'elmt-caption__icon-list elmt-caption__icon-list--lrg';
+
+  const ul = document.createElement('ul');
+  ul.className = 'elmt-caption__icon-list__ul';
+
+  // Total Time
+  const timeLi = document.createElement('li');
+  timeLi.className = 'elmt-caption__icon-list__li elmt-caption__icon-list__li--time';
+  const timeLabel = document.createElement('span');
+  timeLabel.className = 'atom-eyebrow';
+  timeLabel.textContent = 'Total Time';
+  const timeValue = document.createElement('span');
+  timeValue.className = 'atom-eyebrow';
+  timeValue.textContent = '11 Mins';
+  timeLi.appendChild(timeLabel);
+  timeLi.appendChild(timeValue);
+
+  // Yield
+  const yieldLi = document.createElement('li');
+  yieldLi.className = 'elmt-caption__icon-list__li elmt-caption__icon-list__li--yield';
+  const yieldLabel = document.createElement('span');
+  yieldLabel.className = 'atom-eyebrow';
+  yieldLabel.textContent = 'Yield';
+  const yieldLink = document.createElement('a');
+  yieldLink.className = 'atom-eyebrow js-jump-link';
+  yieldLink.href = '#nav-1';
+  yieldLink.textContent = '14 Servings';
+  yieldLi.appendChild(yieldLabel);
+  yieldLi.appendChild(yieldLink);
+
+  // Difficulty
+  const difficultyLi = document.createElement('li');
+  difficultyLi.className = 'elmt-caption__icon-list__li elmt-caption__icon-list__li--difficulty';
+  const difficultyLabel = document.createElement('span');
+  difficultyLabel.className = 'atom-eyebrow';
+  difficultyLabel.textContent = 'Difficulty';
+  const difficultyValue = document.createElement('span');
+  difficultyValue.className = 'atom-eyebrow';
+  difficultyValue.textContent = 'Intermediate';
+  difficultyLi.appendChild(difficultyLabel);
+  difficultyLi.appendChild(difficultyValue);
+
+  // Append List Items
+  ul.appendChild(timeLi);
+  ul.appendChild(yieldLi);
+  ul.appendChild(difficultyLi);
+  iconList.appendChild(ul);
+  iconListInner.appendChild(iconList);
+  iconListContainer.appendChild(iconListInner);
+
+  // Append to measurementsRootDiv
+  measurementsRootDiv.appendChild(iconListContainer);
+
+  detailMeasurements.appendChild(measurementsRootDiv);
+
   detailArea.appendChild(detailIntro);
   detailArea.appendChild(detailMeasurements);
 
