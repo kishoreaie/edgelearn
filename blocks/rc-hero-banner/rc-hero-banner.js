@@ -214,6 +214,7 @@ export default function decorate(block) {
   ul.className = 'elmt-caption__icon-list__ul';
 
   // Total Time
+  const recipeTime = block.querySelector(':scope > div:nth-child(15)').textContent.trim();
   const timeLi = document.createElement('li');
   timeLi.className = 'elmt-caption__icon-list__li elmt-caption__icon-list__li--time';
   const timeLabel = document.createElement('span');
@@ -221,11 +222,12 @@ export default function decorate(block) {
   timeLabel.textContent = 'Total Time';
   const timeValue = document.createElement('span');
   timeValue.className = 'atom-eyebrow';
-  timeValue.textContent = '11 Mins';
+  timeValue.textContent = recipeTime;
   timeLi.appendChild(timeLabel);
   timeLi.appendChild(timeValue);
 
   // Yield
+  const yieldText = block.querySelector(':scope > div:nth-child(16)').textContent.trim();
   const yieldLi = document.createElement('li');
   yieldLi.className = 'elmt-caption__icon-list__li elmt-caption__icon-list__li--yield';
   const yieldLabel = document.createElement('span');
@@ -234,7 +236,7 @@ export default function decorate(block) {
   const yieldLink = document.createElement('a');
   yieldLink.className = 'atom-eyebrow js-jump-link';
   yieldLink.href = '#nav-1';
-  yieldLink.textContent = '14 Servings';
+  yieldLink.textContent = yieldText;
   yieldLi.appendChild(yieldLabel);
   yieldLi.appendChild(yieldLink);
 
