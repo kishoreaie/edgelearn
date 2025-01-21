@@ -156,12 +156,12 @@ export default function decorate(block) {
   detailTitle.textContent = recipeDetailHeading;
 
   //recipe detail rating
-  const recipeRating = document.createElement('h2');
+  const recipeRating = document.createElement('div');
   recipeRating.className = 'elmt-caption__rating elmt-rating';
   recipeRating.textContent = "";
 
   //recipe detail description
-  const recipeDetailDescription = block.querySelector(':scope > div:nth-child(14)').innerHTML;
+  const recipeDetailDescription = block.querySelector(':scope > div:nth-child(14) > div > p').outerHTML;
   const recipeDescription = document.createElement('div');
   recipeDescription.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
   recipeDescription.textContent = recipeDetailDescription;
