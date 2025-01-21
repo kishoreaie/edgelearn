@@ -1,5 +1,4 @@
 export default function decorate(block) {
-
   /* Div Structure
     1. Desktop Banner Image
     2. Mobile Banner Image
@@ -124,7 +123,7 @@ export default function decorate(block) {
   const authorInfoParent = document.createElement('div');
   authorInfoParent.className = 'elmt-author';
 
-  //Author Image
+  //  Author Image
   const authorImage = block.querySelector(':scope > div:nth-child(10) picture img');
   const authorImageParent = document.createElement('div');
   authorImageParent.className = 'elmt-author__portrait';
@@ -136,7 +135,7 @@ export default function decorate(block) {
 
   authorImageParent.appendChild(authorImageDiv);
 
-  //Author Info (Name, Designation)
+  //  Author Info (Name, Designation)
   const authorInfo = document.createElement('div');
   authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
 
@@ -179,18 +178,18 @@ export default function decorate(block) {
   const detailIntroCaptionInner = document.createElement('div');
   detailIntroCaptionInner.className = 'elmt-caption__inner';
 
-  //recipe detail heading
+  //  recipe detail heading
   const recipeDetailHeading = block.querySelector(':scope > div:nth-child(13)').textContent.trim();
   const detailTitle = document.createElement('h2');
   detailTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-lrg';
   detailTitle.textContent = recipeDetailHeading;
 
-  //recipe detail rating
+  //  recipe detail rating
   const recipeRating = document.createElement('div');
   recipeRating.className = 'elmt-caption__rating elmt-rating';
-  recipeRating.textContent = "";
+  recipeRating.textContent = '';
 
-  //recipe detail description
+  //  recipe detail description
   const recipeDetailDescription = block.querySelector(':scope > div:nth-child(14) > div').innerHTML;
   const recipeDescription = document.createElement('div');
   recipeDescription.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
@@ -203,7 +202,7 @@ export default function decorate(block) {
   detailIntroCaption.appendChild(detailIntroCaptionInner);
   detailIntro.appendChild(detailIntroCaption);
 
-  //recipe detail measurements
+  //  recipe detail measurements
   const detailMeasurements = document.createElement('div');
   detailMeasurements.className = 'ognm-header-recipe__combo-details';
 
@@ -293,5 +292,4 @@ export default function decorate(block) {
   // Replace the block content with the newly constructed section
   block.innerHTML = '';
   block.appendChild(section);
-
 }
