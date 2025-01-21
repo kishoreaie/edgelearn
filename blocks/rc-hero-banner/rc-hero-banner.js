@@ -110,6 +110,9 @@ export default function decorate(block) {
   authorTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
   authorTitle.textContent = authorHeadingText;
 
+  const authorInfoParent = document.createElement('div');
+  authorInfoParent.className = 'elmt-author';
+
   const authorInfo = document.createElement('div');
   authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
 
@@ -126,9 +129,11 @@ export default function decorate(block) {
   authorInfo.appendChild(authorName);
   authorInfo.appendChild(authorDesc);
 
+  authorInfoParent.appendChild(authorInfo);
+
   authorCaptionInner.appendChild(authorEyebrow);
   authorCaptionInner.appendChild(authorTitle);
-  authorCaptionInner.appendChild(authorInfo);
+  authorCaptionInner.appendChild(authorInfoParent);
   authorCaption.appendChild(authorCaptionInner);
   authorCardInner.appendChild(authorCaption);
   authorCard.appendChild(authorCardInner);
