@@ -146,13 +146,17 @@ export default function decorate(block) {
   const detailIntroCaption = document.createElement('div');
   detailIntroCaption.className = 'elmt-caption';
 
+  const detailIntroCaptionInner = document.createElement('div');
+  detailIntroCaptionInner.className = 'elmt-caption__inner';
+
   const recipeDetailHeading = block.querySelector(':scope > div:nth-child(13)').textContent.trim();
   const detailTitle = document.createElement('h2');
   detailTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-lrg';
   detailTitle.textContent = recipeDetailHeading;
 
-  detailIntroCaption.appendChild(detailTitle);
-  detailIntro.appendChild(detailIntroCaption);
+  detailIntroCaptionInner.appendChild(detailTitle);
+  detailIntroCaptionInner.appendChild(detailIntroCaption);
+  detailIntroCaption.appendChild(detailIntroCaptionInner);
   detailArea.appendChild(detailIntro);
 
   // Add Recipe Detail Area to the section
