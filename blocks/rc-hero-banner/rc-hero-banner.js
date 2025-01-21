@@ -1,4 +1,15 @@
 export default function decorate(block) {
+
+  /* Div structure
+  1. Desktop Banner Image
+  2. Mobile Banner Image
+  3. Alt Image
+  4. Eyebrow
+  5. Heading
+  6. Save Recipe Text
+  7. Jump Recipe Text
+  */
+
   // Create the root section element
   const section = document.createElement('div');
   section.className = 'ognm-header-recipe tmpl-page__section tmpl-page__section--pd-btm-lg clrs-dark clrs-secondary';
@@ -10,6 +21,7 @@ export default function decorate(block) {
   // Extract the hero background image
   const heroBackground = block.querySelector(':scope > div:nth-child(1) picture img');
   const heroMobileBackground = block.querySelector(':scope > div:nth-child(2) picture img');
+  const altText = block.querySelector(':scope > div:nth-child(3)');
   const heroBackgroundContainer = document.createElement('div');
   heroBackgroundContainer.className = 'ognm-header-recipe__hero-area__bg';
 
@@ -25,7 +37,7 @@ export default function decorate(block) {
     const img = document.createElement('img');
     img.className = 'ognm-header-recipe__hero-area__bg__img';
     img.src = heroMobileBackground.src || heroBackground.src;
-    img.alt = heroBackground.alt || 'Hero Image';
+    img.alt = altText || 'Hero Image';
 
     picture.appendChild(sourceDesktop);
     picture.appendChild(img);
@@ -44,9 +56,9 @@ export default function decorate(block) {
 
   const heading = document.createElement('h1');
   heading.className = 'elmt-caption__title atom-heading atom-heading--lrg';
-  heading.textContent = block.querySelector(':scope > div:nth-child(4)').textContent.trim();
+  heading.textContent = block.querySelector(':scope > div:nth-child(5)').textContent.trim();
 
-  const buttonsWrapper = block.querySelector(':scope > div:nth-child(5)');
+  const buttonsWrapper = block.querySelector(':scope > div:nth-child(6)');
   const buttonContainer = document.createElement('div');
   buttonContainer.className = 'elmt-caption__ctas';
 
@@ -83,24 +95,28 @@ export default function decorate(block) {
   const authorCaptionInner = document.createElement('div');
   authorCaptionInner.className = 'elmt-caption__inner';
 
+  const authorEyebrowText = block.querySelector(':scope > div:nth-child(8)');
   const authorEyebrow = document.createElement('p');
   authorEyebrow.className = 'elmt-caption__eyebrow atom-eyebrow';
-  authorEyebrow.textContent = 'Meet the Creator';
+  authorEyebrow.textContent = authorEyebrowText;
 
+  const authorHeadingText = block.querySelector(':scope > div:nth-child(9)');
   const authorTitle = document.createElement('h2');
   authorTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
-  authorTitle.textContent = 'How a Simple Onion Won the Hearts & Minds of a Generation';
+  authorTitle.textContent = authorHeadingText;
 
   const authorInfo = document.createElement('div');
   authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
 
+  const authorNameText = block.querySelector(':scope > div:nth-child(11)');
   const authorName = document.createElement('div');
   authorName.className = 'elmt-author__info__name';
-  authorName.textContent = 'Matthew Giebeig';
+  authorName.textContent = authorNameText;
 
+  const authorNameDesc = block.querySelector(':scope > div:nth-child(12)');
   const authorDesc = document.createElement('div');
   authorDesc.className = 'elmt-author__info__desc';
-  authorDesc.textContent = 'Senior Frontend Developer';
+  authorDesc.textContent = authorNameDesc;
 
   authorInfo.appendChild(authorName);
   authorInfo.appendChild(authorDesc);

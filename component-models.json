@@ -326,6 +326,12 @@
       },
       {
         "component": "text",
+        "label": "Alt Text",
+        "name": "altText",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "label": "Eyebrow",
         "name": "eyebrow",
         "valueType": "string"
