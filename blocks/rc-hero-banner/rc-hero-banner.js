@@ -155,8 +155,8 @@ export default function decorate(block) {
   detailTitle.textContent = recipeDetailHeading;
 
   detailIntroCaptionInner.appendChild(detailTitle);
-  detailIntroCaptionInner.appendChild(detailIntroCaption);
   detailIntroCaption.appendChild(detailIntroCaptionInner);
+  detailIntro.appendChild(detailIntroCaption);
   detailArea.appendChild(detailIntro);
 
   // Add Recipe Detail Area to the section
