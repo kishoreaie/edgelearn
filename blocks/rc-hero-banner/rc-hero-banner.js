@@ -149,12 +149,27 @@ export default function decorate(block) {
   const detailIntroCaptionInner = document.createElement('div');
   detailIntroCaptionInner.className = 'elmt-caption__inner';
 
+  //recipe detail heading
   const recipeDetailHeading = block.querySelector(':scope > div:nth-child(13)').textContent.trim();
   const detailTitle = document.createElement('h2');
   detailTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-lrg';
   detailTitle.textContent = recipeDetailHeading;
 
+  //recipe detail rating
+  const recipeRating = document.createElement('h2');
+  recipeRating.className = 'elmt-caption__rating elmt-rating';
+  recipeRating.textContent = "";
+
+  //recipe detail description
+  const recipeDetailDescription = block.querySelector(':scope > div:nth-child(14)').innerHTML;
+  const recipeDescription = document.createElement('div');
+  recipeDescription.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
+  recipeDescription.textContent = recipeDetailDescription;
+
   detailIntroCaptionInner.appendChild(detailTitle);
+  detailIntroCaptionInner.appendChild(recipeRating);
+  detailIntroCaptionInner.appendChild(recipeDescription);
+
   detailIntroCaption.appendChild(detailIntroCaptionInner);
   detailIntro.appendChild(detailIntroCaption);
   detailArea.appendChild(detailIntro);
