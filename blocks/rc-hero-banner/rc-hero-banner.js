@@ -164,7 +164,7 @@ export default function decorate(block) {
   const recipeDetailDescription = block.querySelector(':scope > div:nth-child(14) > div > p').outerHTML;
   const recipeDescription = document.createElement('div');
   recipeDescription.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
-  recipeDescription.textContent = recipeDetailDescription;
+  recipeDescription.innerHTML = recipeDetailDescription;
 
   detailIntroCaptionInner.appendChild(detailTitle);
   detailIntroCaptionInner.appendChild(recipeRating);
