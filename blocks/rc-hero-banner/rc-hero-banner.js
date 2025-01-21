@@ -113,6 +113,19 @@ export default function decorate(block) {
   const authorInfoParent = document.createElement('div');
   authorInfoParent.className = 'elmt-author';
 
+  //Author Image
+  const authorImage = block.querySelector(':scope > div:nth-child(10) picture img');
+  const authorImageParent = document.createElement('div');
+  authorImageParent.className = 'elmt-author__portrait';
+
+  const authorImageDiv = document.createElement('img');
+  authorImageDiv.className = 'elmt-author__portrait__image';
+  authorImageDiv.src = authorImage.src;
+  authorImageDiv.alt = 'Author Image';
+
+  authorImageParent.appendChild(authorImageDiv);
+
+  //Author Info (Name, Designation)
   const authorInfo = document.createElement('div');
   authorInfo.className = 'elmt-author__info atom-text atom-text--fine';
 
@@ -129,6 +142,7 @@ export default function decorate(block) {
   authorInfo.appendChild(authorName);
   authorInfo.appendChild(authorDesc);
 
+  authorInfoParent.appendChild(authorImageParent);
   authorInfoParent.appendChild(authorInfo);
 
   authorCaptionInner.appendChild(authorEyebrow);
