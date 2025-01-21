@@ -172,7 +172,21 @@ export default function decorate(block) {
 
   detailIntroCaption.appendChild(detailIntroCaptionInner);
   detailIntro.appendChild(detailIntroCaption);
+
+  //recipe detail measurements
+  const detailMeasurements = document.createElement('div');
+  detailMeasurements.className = 'ognm-header-recipe__combo-details';
+
   detailArea.appendChild(detailIntro);
+  detailArea.appendChild(detailMeasurements);
+
+  const detailAreaInner = document.createElement('div');
+  detailAreaInner.className = 'ognm-header-recipe__container ognm-header-recipe__container--detail-simple-flex elmt-container';
+
+  detailAreaInner.appendChild(detailIntro);
+  detailAreaInner.appendChild(detailMeasurements);
+
+  detailArea.appendChild(detailAreaInner);
 
   // Add Recipe Detail Area to the section
   section.appendChild(detailArea);
