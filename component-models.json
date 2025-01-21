@@ -221,141 +221,135 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "general",
-        "fields": [
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "desktopImage",
-            "label": "Desktop Image",
-            "multi": false
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "mobileImage",
-            "label": "Mobile Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "label": "Alt Text",
-            "name": "altText",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Eyebrow",
-            "name": "eyebrow",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Heading",
-            "name": "heading",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Save Recipe Text",
-            "name": "saveRecipeText",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Jump Recipe Text",
-            "name": "jumpRecipeText",
-            "valueType": "string"
-          }
-        ]
+        "name": "general"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "desktopImage",
+        "label": "Desktop Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileImage",
+        "label": "Mobile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "label": "Alt Text",
+        "name": "altText",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Eyebrow",
+        "name": "eyebrow",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Save Recipe Text",
+        "name": "saveRecipeText",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Jump Recipe Text",
+        "name": "jumpRecipeText",
+        "valueType": "string"
       },
       {
         "component": "tab",
         "label": "Author Card",
-        "name": "authorcard",
-        "fields": [
-          {
-            "component": "text",
-            "label": "Eyebrow",
-            "name": "authorCardEyebrow",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Heading",
-            "name": "authorCardHeading",
-            "valueType": "string"
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "authorImage",
-            "label": "Author Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "label": "Author Name",
-            "name": "authorName",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Author Designation",
-            "name": "authorDesignation",
-            "valueType": "string"
-          }
-        ]
+        "name": "authorcard"
+      },
+      {
+        "component": "text",
+        "label": "Eyebrow",
+        "name": "authorCardEyebrow",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "authorCardHeading",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "authorImage",
+        "label": "Author Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "label": "Author Name",
+        "name": "authorName",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Author Designation",
+        "name": "authorDesignation",
+        "valueType": "string"
       },
       {
         "component": "tab",
         "label": "Recipe Detail",
-        "name": "recipeDetail",
-        "fields": [
-          {
-            "component": "text",
-            "label": "Heading",
-            "name": "recipeDetailHeading",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "label": "Description",
-            "name": "recipeDetailDescription",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Time",
-            "name": "recipeDetailTime",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Yield",
-            "name": "recipeDetailYield",
-            "valueType": "string"
-          },
-          {
-            "component": "aem-tag",
-            "label": "Difficulty Level",
-            "name": "recipeDetailDifficulty",
-            "valueType": "string"
-          },
-          {
-            "component": "aem-tag",
-            "label": "Dietary Interest",
-            "name": "recipeDetailDietary",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "label": "Submitted By",
-            "name": "recipeDetailSubmittedBy",
-            "valueType": "string"
-          }
-        ]
+        "name": "recipeDetail"
+      },
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "recipeDetailHeading",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Description",
+        "name": "recipeDetailDescription",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Time",
+        "name": "recipeDetailTime",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Yield",
+        "name": "recipeDetailYield",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Difficulty Level",
+        "name": "recipeDetailDifficulty",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Dietary Interest",
+        "name": "recipeDetailDietary",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Submitted By",
+        "name": "recipeDetailSubmittedBy",
+        "valueType": "string"
       }
     ]
-  }  
+  }
 ]
