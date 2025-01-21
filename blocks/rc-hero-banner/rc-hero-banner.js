@@ -75,6 +75,7 @@ export default function decorate(block) {
     });
   }
 
+  captionInner.appendChild(eyebrow);
   captionInner.appendChild(heading);
   captionInner.appendChild(buttonContainer);
   caption.appendChild(captionInner);
