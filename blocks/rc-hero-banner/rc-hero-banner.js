@@ -21,7 +21,7 @@ export default function decorate(block) {
   // Extract the hero background image
   const heroBackground = block.querySelector(':scope > div:nth-child(1) picture img');
   const heroMobileBackground = block.querySelector(':scope > div:nth-child(2) picture img');
-  const altText = block.querySelector(':scope > div:nth-child(3)');
+  const altText = block.querySelector(':scope > div:nth-child(3)').textContent.trim();
   const heroBackgroundContainer = document.createElement('div');
   heroBackgroundContainer.className = 'ognm-header-recipe__hero-area__bg';
 
@@ -53,6 +53,10 @@ export default function decorate(block) {
 
   const captionInner = document.createElement('div');
   captionInner.className = 'elmt-caption__inner';
+
+  const eyebrow = document.createElement('p');
+  eyebrow.className = 'elmt-caption__eyebrow atom-eyebrow atom-eyebrow--mega atom-resp-adjusted';
+  eyebrow.textContent = block.querySelector(':scope > div:nth-child(4)').textContent.trim();
 
   const heading = document.createElement('h1');
   heading.className = 'elmt-caption__title atom-heading atom-heading--lrg';
@@ -141,9 +145,10 @@ export default function decorate(block) {
   const detailIntroCaption = document.createElement('div');
   detailIntroCaption.className = 'elmt-caption';
 
+  const recipeDetailHeading = block.querySelector(':scope > div:nth-child(13)').textContent.trim();
   const detailTitle = document.createElement('h2');
   detailTitle.className = 'elmt-caption__title atom-heading atom-heading--sub-lrg';
-  detailTitle.textContent = 'Matthew\'s Famous Red Onion Stew';
+  detailTitle.textContent = recipeDetailHeading;
 
   detailIntroCaption.appendChild(detailTitle);
   detailIntro.appendChild(detailIntroCaption);
