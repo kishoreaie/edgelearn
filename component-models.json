@@ -351,5 +351,22 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "standard-banner",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
+      }
+    ]
   }
 ]
