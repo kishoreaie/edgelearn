@@ -19,22 +19,28 @@ export default function decorate(block) {
   const captionInner = document.createElement('div');
   captionInner.className = 'elmt-caption__inner';
 
-  // Safely retrieve the title
+  // Debugging and Safely Retrieve Title
   const titleDiv = block.querySelector(':scope > div:nth-child(1) > div > p');
+  console.log('Title Selector:', titleDiv); // Log the selected element for debugging
   if (titleDiv) {
     const title = document.createElement('h2');
     title.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
     title.textContent = titleDiv.textContent.trim();
     captionInner.appendChild(title);
+  } else {
+    console.warn('Title not found. Please check the DOM structure.');
   }
 
-  // Safely retrieve the description
+  // Debugging and Safely Retrieve Description
   const descriptionDiv = block.querySelector(':scope > div:nth-child(2) > div > p');
+  console.log('Description Selector:', descriptionDiv); // Log the selected element for debugging
   if (descriptionDiv) {
     const description = document.createElement('div');
     description.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
     description.textContent = descriptionDiv.textContent.trim();
     captionInner.appendChild(description);
+  } else {
+    console.warn('Description not found. Please check the DOM structure.');
   }
 
   caption.appendChild(captionInner);
