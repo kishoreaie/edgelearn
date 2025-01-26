@@ -20,7 +20,7 @@ export default function decorate(block) {
   captionInner.className = 'elmt-caption__inner';
 
   // Debugging and Safely Retrieve Title
-  const titleDiv = block.querySelector(':scope > div:nth-child(1) > div > p');
+  const titleDiv = block.querySelector(':scope > div:nth-child(1)');
   console.log('Title Selector:', titleDiv); // Log the selected element for debugging
   if (titleDiv) {
     const title = document.createElement('h2');
@@ -32,7 +32,7 @@ export default function decorate(block) {
   }
 
   // Debugging and Safely Retrieve Description
-  const descriptionDiv = block.querySelector(':scope > div:nth-child(2) > div > p');
+  const descriptionDiv = block.querySelector(':scope > div:nth-child(2)');
   console.log('Description Selector:', descriptionDiv); // Log the selected element for debugging
   if (descriptionDiv) {
     const description = document.createElement('div');
