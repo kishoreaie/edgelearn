@@ -20,7 +20,7 @@ export default function decorate(block) {
   captionInner.className = 'elmt-caption__inner';
 
   // Safely retrieve the title
-  const titleDiv = block.querySelector(':scope > div:nth-child(1)');
+  const titleDiv = block.querySelector(':scope > div:nth-child(1) > div > p');
   if (titleDiv) {
     const title = document.createElement('h2');
     title.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
@@ -29,11 +29,11 @@ export default function decorate(block) {
   }
 
   // Safely retrieve the description
-  const descriptionDiv = block.querySelector(':scope > div:nth-child(2)');
+  const descriptionDiv = block.querySelector(':scope > div:nth-child(2) > div > p');
   if (descriptionDiv) {
     const description = document.createElement('div');
     description.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
-    description.innerHTML = descriptionDiv.textContent.trim();
+    description.textContent = descriptionDiv.textContent.trim();
     captionInner.appendChild(description);
   }
 
