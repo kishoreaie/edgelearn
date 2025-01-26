@@ -19,18 +19,24 @@ export default function decorate(block) {
   const captionInner = document.createElement('div');
   captionInner.className = 'elmt-caption__inner';
 
-  const titleDiv = block.querySelector(':scope > div:nth-child(1)').textContent.trim();
-  const title = document.createElement('h2');
-  title.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
-  title.textContent = titleDiv;
+  // Safely retrieve the title
+  const titleDiv = block.querySelector(':scope > div:nth-child(1)');
+  if (titleDiv) {
+    const title = document.createElement('h2');
+    title.className = 'elmt-caption__title atom-heading atom-heading--sub-med';
+    title.textContent = titleDiv.textContent.trim();
+    captionInner.appendChild(title);
+  }
 
-  const descriptionDiv = block.querySelector(':scope > div:nth-child(2)').textContent.trim();
-  const description = document.createElement('div');
-  description.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
-  description.innerHTML = descriptionDiv;
+  // Safely retrieve the description
+  const descriptionDiv = block.querySelector(':scope > div:nth-child(2)');
+  if (descriptionDiv) {
+    const description = document.createElement('div');
+    description.className = 'elmt-caption__desc atom-text atom-text--wysiwyg';
+    description.innerHTML = descriptionDiv.textContent.trim();
+    captionInner.appendChild(description);
+  }
 
-  captionInner.appendChild(title);
-  captionInner.appendChild(description);
   caption.appendChild(captionInner);
   contents.appendChild(caption);
   container.appendChild(contents);
