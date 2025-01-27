@@ -370,7 +370,7 @@
     ]
   },
   {
-    "id": "cardlistitem",
+    "id": "cardslistitem",
     "fields": [
       {
         "component": "reference",
