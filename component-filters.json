@@ -31,13 +31,20 @@
       "fragment",
       "quote",
       "rc-hero-banner",
-      "standard-hero"
+      "standard-hero",
+      "cardslist"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "cardslist",
+    "components": [
+      "cardslistitem"
     ]
   }
 ]
