@@ -42,7 +42,7 @@
     ]
   },
   {
-    "id": "cardslist",
+    "id": "cards-list",
     "components": [
       "cardslistitem"
     ]
