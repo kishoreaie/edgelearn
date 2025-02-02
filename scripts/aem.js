@@ -780,3 +780,11 @@ export {
   waitForLCP,
   wrapTextNodes,
 };
+
+// Insert the following script just before the closing body tag
+window.addEventListener('DOMContentLoaded', () => {
+  const script = document.createElement('script');
+  script.src = '/content/dam/vitamix/client-library/js/design-system.min.js?v=1734105872';
+  script.type = 'text/javascript';
+  document.body.appendChild(script);
+});
